@@ -169,17 +169,17 @@ class Pylontech:
         return (lenid_invert_plus_one << 12) + lenid
 
 
-    def send_cmd(self, address: int, cmd, info: bytes = b''):
-        raw_frame = self._encode_cmd(address, cmd, info)
+    def send_cmd(self, address: int, cmd, info: bytes = b'', version = 0x20):
+        raw_frame = self._encode_cmd(address, cmd, info, version)
         self.s.write(raw_frame)
 
 
-    def _encode_cmd(self, address: int, cid2: int, info: bytes = b''):
+    def _encode_cmd(self, address: int, cid2: int, info: bytes = b'', version = 0x20):
         cid1 = 0x46
 
         info_length = Pylontech.get_info_length(info)
 
-        frame = "{:02X}{:02X}{:02X}{:02X}{:04X}".format(0x20, address, cid1, cid2, info_length).encode()
+        frame = "{:02X}{:02X}{:02X}{:02X}{:04X}".format(version , address, cid1, cid2, info_length).encode()
         frame += info
 
         frame_chksum = Pylontech.get_frame_checksum(frame)
