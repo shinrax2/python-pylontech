@@ -20,20 +20,20 @@ class DivideBy1000(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return obj / 1000
     def _encode(self, obj, context, path) -> float:
-        return obj * 1000
+        return obj
 
 
 class DivideBy100(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return obj / 100
     def _encode(self, obj, context, path) -> float:
-        return obj * 100
+        return obj
 
 class DivideBy10(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return obj / 10
     def _encode(self, obj, context, path) -> float:
-        return obj *10
+        return obj
 
 class ToVolt(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
@@ -45,7 +45,7 @@ class ToAmp(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return obj / 10
     def _encode(self, obj, context, path) -> float:
-        return obj * 10
+        return obj
 
 class ToCelsius(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
