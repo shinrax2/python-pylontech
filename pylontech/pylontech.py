@@ -189,7 +189,7 @@ class Pylontech:
     def _encode_cmd(self, address: int, cid2: int, info: bytes = b'', version = 0x20):
         cid1 = 0x46
 
-        info_length = Pylontech.get_info_length(info)
+        info_length = int(Pylontech.get_info_length(info))
 
         frame = "{:02X}{:02X}{:02X}{:02X}{:04X}".format(version , address, cid1, cid2, info_length).encode()
         frame += info
