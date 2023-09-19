@@ -51,7 +51,7 @@ class ToCelsius(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return (obj - 2731) / 10.0  # in Kelvin*10
     def _encode(self, obj, context, path) -> int:
-        return int((obj + 273.1) * 10)
+        return int((obj + 2731) * 10)
 
 
 
