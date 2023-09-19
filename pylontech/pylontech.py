@@ -19,39 +19,39 @@ class JoinBytes(construct.Adapter):
 class DivideBy1000(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return obj / 1000
-    def _encode(self, obj, context, path) -> float:
-        return obj
+    def _encode(self, obj, context, path) -> int:
+        return int(obj * 1000)
 
 
 class DivideBy100(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return obj / 100
-    def _encode(self, obj, context, path) -> float:
-        return obj
+    def _encode(self, obj, context, path) -> int:
+        return int(obj * 100)
 
 class DivideBy10(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return obj / 10
-    def _encode(self, obj, context, path) -> float:
-        return obj
+    def _encode(self, obj, context, path) -> int:
+        return int(obj * 10)
 
 class ToVolt(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return obj / 1000
-    def _encode(self, obj, context, path) -> float:
-        return obj
+    def _encode(self, obj, context, path) -> int:
+        return int(obj * 1000)
 
 class ToAmp(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return obj / 10
-    def _encode(self, obj, context, path) -> float:
-        return obj
+    def _encode(self, obj, context, path) -> int:
+        return int(obj * 10)
 
 class ToCelsius(construct.Adapter):
     def _decode(self, obj, context, path) -> float:
         return (obj - 2731) / 10.0  # in Kelvin*10
     def _encode(self, obj, context, path) -> int:
-        return obj
+        return int((obj + 273.1) * 10)
 
 
 
