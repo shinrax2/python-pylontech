@@ -5,16 +5,6 @@ import construct
 
 logger = logging.getLogger(__name__)
 
-RTN_OK = 0x00
-RTN_VERERR = 0x01
-RTN_CHKSUMERR = 0x02
-RTN_LCHKSUMERR = 0x03
-RTN_CID2ERR = 0x04
-RTN_CMDFMTERR = 0x05
-RTN_INVALIDDATA = 0x06
-RTN_ADRERR = 0x90
-RTN_COMERR = 0x91
-
 class HexToByte(construct.Adapter):
     def _decode(self, obj, context, path) -> bytes:
         hexstr = ''.join([chr(x) for x in obj])
@@ -161,6 +151,16 @@ class Pylontech:
         "TotalPower" / construct.Computed(construct.this.Power),
         "StateOfCharge" / construct.Computed(construct.this.RemainingCapacity / construct.this.TotalCapacity),
     )
+    
+    RTN_OK = 0x00
+    RTN_VERERR = 0x01
+    RTN_CHKSUMERR = 0x02
+    RTN_LCHKSUMERR = 0x03
+    RTN_CID2ERR = 0x04
+    RTN_CMDFMTERR = 0x05
+    RTN_INVALIDDATA = 0x06
+    RTN_ADRERR = 0x90
+    RTN_COMERR = 0x91
 
     def __init__(self, serial_port='/dev/ttyUSB0', baudrate=115200):
         self.s = serial.Serial(serial_port, baudrate, bytesize=8, parity=serial.PARITY_NONE, stopbits=1, timeout=2, exclusive=True)
