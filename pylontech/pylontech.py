@@ -5,6 +5,16 @@ import construct
 
 logger = logging.getLogger(__name__)
 
+RTN_OK = 0x00
+RTN_VERERR = 0x01
+RTN_CHKSUMERR = 0x02
+RTN_LCHKSUMERR = 0x03
+RTN_CID2ERR = 0x04
+RTN_CMDFMTERR = 0x05
+RTN_INVALIDDATA = 0x06
+RTN_ADRERR = 0x90
+RTN_COMERR = 0x91
+
 class HexToByte(construct.Adapter):
     def _decode(self, obj, context, path) -> bytes:
         hexstr = ''.join([chr(x) for x in obj])

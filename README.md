@@ -1,3 +1,10 @@
+# shinrax2's python-pylontech
+
+this is a customized fork of https://github.com/Frankkkkk/python-pylontech for my own purposes.
+
+please use the original!
+
+ORIGINAL README:
 # python-pylontech
 Python lib to talk to pylontech lithium batteries (US2000, US3000, ...) using RS485
 
