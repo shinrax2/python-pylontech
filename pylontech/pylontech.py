@@ -89,12 +89,7 @@ class Pylontech:
             "ChargeImmediately2" / construct.Flag,
             "ChargeImmediately1" / construct.Flag,
             "FullChargeRequest" / construct.Flag,
-            "ShouldCharge"
-            / construct.Computed(
-                lambda this: this.ChargeImmediately2
-                | this.ChargeImmediately1
-                | this.FullChargeRequest
-            ),
+            "ShouldCharge" / construct.Computed(lambda this: this.ChargeImmediately2 | this.ChargeImmediately1 | this.FullChargeRequest),
             "_padding" / construct.BitsInteger(3),
         ),
     )
